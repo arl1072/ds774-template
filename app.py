@@ -32,7 +32,7 @@ def contact():
     else:
         return render_template('contact.html', message=message)
 
-@app.route("/issueslog", methods=['GET', 'POST'])
+@app.route("/admin", methods=['GET', 'POST'])
 def admin():
     error = ''
     records = ''
@@ -42,7 +42,7 @@ def admin():
     if request.method == 'POST':
 
         # If the form was Login, perform log in steps
-        if request.form.get('issueslog') == 'Login':
+        if request.form.get('admin') == 'Login':
             username = request.form['username']
             password = request.form['password']
 
@@ -69,7 +69,7 @@ def admin():
         records = get_records()
 
     # return the admin page, showing any message or data that we may have
-    return render_template('issueslog.html', error = error, records = records)
+    return render_template('admin.html', error = error, records = records)
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
