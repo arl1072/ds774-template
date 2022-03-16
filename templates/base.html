@@ -26,7 +26,7 @@
   <!-- jumbotron -->
   <div class="jumbotron text-center">
     <!-- Your Image here -->
-    <img src="{{url_for('static',filename='UNH.png')}}" alt="">
+    <img src="{{url_for('static',filename='logo.png')}}" alt="">
 
     <!-- rounded -->
     <!-- <img src="{{url_for('static',filename='UNH.png')}}" class="rounded-circle" alt=""> -->
@@ -39,7 +39,7 @@
   <!-- navbar -->
 
   <!-- UNH Color -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #043591;"> 
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #049185;"> 
   
   <!-- Standard Bootstrap -->
   <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary"> -->
@@ -55,7 +55,7 @@
         (url_for('home'), 'home', 'Home'),
         (url_for('courses'), 'courses', 'Courses'),
         (url_for('contact'), 'contact', 'Contact'),
-        (url_for('admin'), 'admin', 'Admin')
+        (url_for('admin'), 'admin', 'Issues Log')
     ] -%}
     <!-- Loop to set proper link active in Navbar -->
     {% set active_page = active_page|default('home') -%}
