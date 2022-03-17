@@ -11,29 +11,24 @@ app.secret_key = "IAN"
 def home():
     return render_template('home.html')
 
-@app.route("/courses")
-def courses():
-    return render_template('courses.html')
+@app.route("/documents")
+def documents():
+    return render_template('documents.html')
 
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-    message = ''
-    if request.method == 'POST':
-        fname = request.form['fname']
-        lname = request.form['lname']
-        eaddress = request.form['eaddress']
-        message = request.form['message']
-        result = contact_form(fname, lname, eaddress, message)
+@app.route("/announcements")
+def announcements():
+    return render_template('announcements.html')
 
-        if result:
-            return render_template('contact.html', message='Thank you for your submission')
-        else:
-            return render_template('contact.html', message='Error with submission')
-    else:
-        return render_template('contact.html', message=message)
+@app.route("/employeedirectory")
+def employeedirectory():
+    return render_template('employeedirectory.html')
 
-@app.route("/admin", methods=['GET', 'POST'])
-def admin():
+@app.route("/events")
+def events():
+    return render_template('events.html')
+
+@app.route("/issueslog", methods=['GET', 'POST'])
+def issueslog():
     error = ''
     records = ''
     print(request)
@@ -70,6 +65,25 @@ def admin():
 
     # return the admin page, showing any message or data that we may have
     return render_template('admin.html', error = error, records = records)
+
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    message = ''
+    if request.method == 'POST':
+        fname = request.form['fname']
+        lname = request.form['lname']
+        eaddress = request.form['eaddress']
+        message = request.form['message']
+        result = contact_form(fname, lname, eaddress, message)
+
+        if result:
+            return render_template('contact.html', message='Thank you for your submission')
+        else:
+            return render_template('contact.html', message='Error with submission')
+    else:
+        return render_template('contact.html', message=message)
+
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
