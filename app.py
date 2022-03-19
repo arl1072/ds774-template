@@ -67,8 +67,8 @@ def issueslog():
     return render_template('admin.html', error = error, records = records)
 
 
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
+@app.route('/issueslogcenter', methods=['GET', 'POST'])
+def issueslog():
     message = ''
     if request.method == 'POST':
         fname = request.form['fname']
