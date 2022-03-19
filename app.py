@@ -57,7 +57,7 @@ def issueslog():
         elif request.form.get('issueslog')  == 'Logout':
             session.pop('user_id')
 
-@app.route("/view")
+@app.route("/view", methods=['GET', 'POST'])
 def view():
     error = ''
     records = ''
@@ -67,7 +67,7 @@ def view():
         records = get_records()
 
     # return the admin page, showing any message or data that we may have
-    return render_template('dashboard.html', error = error, records = records)
+    return render_template('issueslog.html', error = error, records = records)
 
 @app.route('/insertissue', methods=['GET', 'POST'])
 def insertissue():
