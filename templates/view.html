@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
+
+{% block title %}<title>View</title>{% endblock %}
+{% block content %}
+
 <!-- container for tablular structure: 1 row & 1 column -->
 <div class="container">
     <div class="row">
@@ -42,3 +48,5 @@
             {% endfor %}
           </tbody>
         </table>
+
+{% endblock %}

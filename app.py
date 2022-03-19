@@ -27,12 +27,12 @@ def employeedirectory():
 def events():
     return render_template('events.html')
 
+@app.route("/dashboard")
+def dashboard():
+    return render_template('dashboard.html')
+
 @app.route("/issueslog", methods=['GET', 'POST'])
 def issueslog():
-    error = ''
-    records = ''
-    print(request)
-
     # If method was POST, a form was submitted
     if request.method == 'POST':
 
@@ -44,6 +44,10 @@ def issueslog():
             # pass username and password from form to our login logic
             result = login_user(username, password)
 
+            # If login was successful, create a session for the user, and load data, show data onpage
+            if result:
+                session['user_id'] = result
+                return render_template('dashboard.html')
             
             # login was not sucessful, show error message
             else:
@@ -54,9 +58,6 @@ def issueslog():
             session.pop('user_id')
 
         
-    # if user is logged in previously, show data. If no session, data is not retireved
-    if 'user_id' in session:
-        records = get_records()
 
     # return the admin page, showing any message or data that we may have
     return render_template('admin.html', error = error, records = records)
