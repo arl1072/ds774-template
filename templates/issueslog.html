@@ -8,12 +8,9 @@
   <div class="row">
     <div class="col-sm-12">
 
-      <!-- If there is a current user session, display dashboard entries -->
+      <!-- If there is a current user session, display dashboard -->
       {% if session['user_id'] %}
-     
-      <div class="col-sm-8 text-left"> 
-      
-        <div class="form">
+    
     <p>Welcome to Dashboard.</p>
   
     
@@ -39,7 +36,7 @@
         {% if error %}
         <h3 style="color:red"> {{ error }} </h3>
         {% endif %}
-        <form action="" method="post" name="admin">
+        <form action="" method="post" name="issueslog">
           <input class="form-control" type="text" name="username" placeholder="Username" required /><br />
           <input class="form-control" type="password" name="password" placeholder="Password" required /> <br />
           <input class="btn btn-primary btn-lg" name="admin" type="submit" value="Login" />

@@ -57,44 +57,17 @@ def issueslog():
         elif request.form.get('issueslog')  == 'Logout':
             session.pop('user_id')
 
-@app.route("/view", methods=['GET', 'POST'])
+@app.route("/view")
 def view():
     error = ''
     records = ''
-    print(request)
-
-    # If method was POST, a form was submitted
-    if request.method == 'POST':
-
-        # If the form was Login, perform log in steps
-        if request.form.get('admin') == 'Login':
-            username = request.form['username']
-            password = request.form['password']
-
-            # pass username and password from form to our login logic
-            result = login_user(username, password)
-
-            # If login was successful, create a session for the user, and load data, show data onpage
-            if result:
-                session['user_id'] = result
-                records = get_records()
-                # print(records)
-            
-            # login was not sucessful, show error message
-            else:
-                error = 'Invalid Username or Password'
-        
-        # if form was logout button, end user session
-        elif request.form.get('admin')  == 'Logout':
-            session.pop('user_id')
-
-        
+    print(request)  
     # if user is logged in previously, show data. If no session, data is not retireved
     if 'user_id' in session:
         records = get_records()
 
     # return the admin page, showing any message or data that we may have
-    return render_template('admin.html', error = error, records = records)
+    return render_template('dashboard.html', error = error, records = records)
 
 @app.route('/insertissue', methods=['GET', 'POST'])
 def insertissue():
@@ -107,11 +80,11 @@ def insertissue():
         result = contact_form(fname, lname, eaddress, message)
 
         if result:
-            return render_template('contact.html', message='Thank you for your submission')
+            return render_template('insertissue.html', message='Thank you for your submission')
         else:
-            return render_template('contact.html', message='Error with submission')
+            return render_template('insertissue.html', message='Error with submission')
     else:
-        return render_template('contact.html', message=message)
+        return render_template('insertissue.html', message=message)
 
 
 @app.route("/register", methods=['GET', 'POST'])
