@@ -44,11 +44,6 @@ def issueslog():
             # pass username and password from form to our login logic
             result = login_user(username, password)
 
-            # If login was successful, create a session for the user, and load data, show data onpage
-            if result:
-                session['user_id'] = result
-                records = get_records()
-                # print(records)
             
             # login was not sucessful, show error message
             else:
