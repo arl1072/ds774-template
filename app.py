@@ -68,7 +68,7 @@ def issueslog():
 
 
 @app.route('/issueslogcenter', methods=['GET', 'POST'])
-def issueslog():
+def issueslogcenter():
     message = ''
     if request.method == 'POST':
         fname = request.form['fname']
