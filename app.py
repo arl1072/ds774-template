@@ -37,7 +37,7 @@ def issueslog():
     if request.method == 'POST':
 
         # If the form was Login, perform log in steps
-        if request.form.get('admin') == 'Login':
+        if request.form.get('issueslog') == 'Login':
             username = request.form['username']
             password = request.form['password']
 
@@ -54,13 +54,8 @@ def issueslog():
                 error = 'Invalid Username or Password'
         
         # if form was logout button, end user session
-        elif request.form.get('admin')  == 'Logout':
+        elif request.form.get('issueslog')  == 'Logout':
             session.pop('user_id')
-
-        
-
-    # return the admin page, showing any message or data that we may have
-    return render_template('admin.html', error = error, records = records)
 
 @app.route("/view", methods=['GET', 'POST'])
 def view():
