@@ -40,7 +40,7 @@ def issueslog():
     if request.method == 'POST':
 
         # If the form was Login, perform log in steps
-        if request.form.get('issueslog') == 'Login':
+        if request.form.get('issueslog') == 'login':
             username = request.form['username']
             password = request.form['password']
 
@@ -50,7 +50,7 @@ def issueslog():
             # If login was successful, create a session for the user, and load data, show data onpage
             if result:
                 session['user_id'] = result
-                return redirect('dashboard.html')
+                return redirect(url_for('dashboard'))
             
             # login was not sucessful, show error message
             else:
