@@ -75,7 +75,6 @@ def insertissue():
         eaddress = request.form['eaddress']
         message = request.form['message']
         result = contact_form(fname, lname, eaddress, message)
-
         if result:
             return render_template('insertissue.html', message='Thank you for your submission')
         else:
