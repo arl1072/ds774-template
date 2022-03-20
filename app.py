@@ -36,11 +36,12 @@ def issueslog():
     error = ''
     records = ''
     print(request)
+
     # If method was POST, a form was submitted
     if request.method == 'POST':
 
         # If the form was Login, perform log in steps
-        if request.form.get('issueslog') == 'login':
+        if request.form.get('issueslog') == 'Login':
             username = request.form['username']
             password = request.form['password']
 
@@ -50,7 +51,7 @@ def issueslog():
             # If login was successful, create a session for the user, and load data, show data onpage
             if result:
                 session['user_id'] = result
-                return redirect(url_for('dashboard'))
+                return redirect('/dashboard')
             
             # login was not sucessful, show error message
             else:
@@ -126,11 +127,11 @@ def edit():
             return redirect('/admin')
 
         elif request.form.get('edit') == 'cancel':
-            return redirect('/admin')
+            return redirect('/dashboard')
         
-        elif request.form.get('admin') == 'Delete':
+        elif request.form.get('issueslog') == 'Delete':
             delete_record(msg_id)
-            return redirect('/admin')
+            return redirect('/dashboard')
 
 
     entry = get_single_record(msg_id)
