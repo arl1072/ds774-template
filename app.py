@@ -72,9 +72,9 @@ def insertissue():
     if request.method == 'POST':
         fname = request.form['fname']
         lname = request.form['lname']
-        eaddress = request.form['istatus']
+        eaddress = request.form['eaddress']
         message = request.form['message']
-        result = contact_form(fname, lname, istatus, message)
+        result = contact_form(fname, lname, eaddress, message)
 
         if result:
             return render_template('insertissue.html', message='Thank you for your submission')
@@ -113,10 +113,10 @@ def edit():
         if request.form.get('edit') == 'save':
             fname = request.form['fname']
             lname = request.form['lname']
-            eaddress = request.form['istatus']
+            eaddress = request.form['eaddress']
             message = request.form['message']
             print(fname, lname, eaddress, message)
-            edit_record(msg_id, fname, lname, istatus, message)
+            edit_record(msg_id, fname, lname, eaddress, message)
             return redirect('/admin')
 
         elif request.form.get('edit') == 'cancel':
