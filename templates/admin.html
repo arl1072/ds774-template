@@ -11,9 +11,17 @@
       <!-- If there is a current user session, display database entries -->
       {% if session['user_id'] %}
     
-     <p> <a class="btn btn-primary btn-lg" href="/insertissue" role="button">Insert Issue</a> |  <div class="form-group"> <form action="" method="post" name="logout"> <input class="btn btn-primary btn-lg" name="admin" type="submit" value="Logout" /> </form> </div> </p>
-     <hr>
-     
+      
+
+      <div class="form-group">
+        <form action="" method="post" name="logout">
+          <input class="btn btn-primary" name="admin" type="submit" value="Logout" />
+          <a class="btn btn-primary" href="/insertissue" role="button">Insert Issue</a>
+        </form>
+      </div>
+
+      <hr>
+      
       <h3>Submitted Records</h3>
 
       <!-- Show database records here -->
