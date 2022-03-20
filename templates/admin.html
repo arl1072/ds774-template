@@ -10,8 +10,8 @@
 
       <!-- If there is a current user session, display database entries -->
       {% if session['user_id'] %}
-     
-      <p><a href="insertissue.html">Insert Issue</a></p>
+    
+      <a class="btn btn-primary" href="/insertissue" role="button">Insert Issue</a>
 
       <div class="form-group">
         <form action="" method="post" name="logout">
@@ -19,7 +19,7 @@
         </form>
       </div>
       
-      <h3>Submitted Logs</h3>
+      <h3>Submitted Records</h3>
 
       <!-- Show database records here -->
       <table class="table table-striped">
