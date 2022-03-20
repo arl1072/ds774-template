@@ -33,6 +33,9 @@ def dashboard():
 
 @app.route("/issueslog", methods=['GET', 'POST'])
 def issueslog():
+    error = ''
+    records = ''
+    print(request)
     # If method was POST, a form was submitted
     if request.method == 'POST':
 
@@ -47,7 +50,7 @@ def issueslog():
             # If login was successful, create a session for the user, and load data, show data onpage
             if result:
                 session['user_id'] = result
-                return render_template('dashboard.html')
+                return redirect('dashboard.html')
             
             # login was not sucessful, show error message
             else:
