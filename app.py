@@ -27,12 +27,8 @@ def employeedirectory():
 def events():
     return render_template('events.html')
 
-@app.route("/dashboard")
-def dashboard():
-    return render_template('dashboard.html')
-
-@app.route("/issueslog", methods=['GET', 'POST'])
-def issueslog():
+@app.route("/admin", methods=['GET', 'POST'])
+def admin():
     error = ''
     records = ''
     print(request)
@@ -41,7 +37,7 @@ def issueslog():
     if request.method == 'POST':
 
         # If the form was Login, perform log in steps
-        if request.form.get('issueslog') == 'Login':
+        if request.form.get('admin') == 'Login':
             username = request.form['username']
             password = request.form['password']
 
@@ -51,27 +47,24 @@ def issueslog():
             # If login was successful, create a session for the user, and load data, show data onpage
             if result:
                 session['user_id'] = result
-                return redirect('/dashboard')
+                records = get_records()
+                # print(records)
             
             # login was not sucessful, show error message
             else:
                 error = 'Invalid Username or Password'
         
         # if form was logout button, end user session
-        elif request.form.get('issueslog')  == 'Logout':
+        elif request.form.get('admin')  == 'Logout':
             session.pop('user_id')
 
-@app.route("/view", methods=['GET', 'POST'])
-def view():
-    error = ''
-    records = ''
-    print(request)  
+        
     # if user is logged in previously, show data. If no session, data is not retireved
     if 'user_id' in session:
         records = get_records()
 
     # return the admin page, showing any message or data that we may have
-    return render_template('issueslog.html', error = error, records = records)
+    return render_template('admin.html', error = error, records = records)
 
 @app.route('/insertissue', methods=['GET', 'POST'])
 def insertissue():
@@ -127,11 +120,11 @@ def edit():
             return redirect('/admin')
 
         elif request.form.get('edit') == 'cancel':
-            return redirect('/dashboard')
+            return redirect('/admin')
         
-        elif request.form.get('issueslog') == 'Delete':
+        elif request.form.get('admin') == 'Delete':
             delete_record(msg_id)
-            return redirect('/dashboard')
+            return redirect('/admin')
 
 
     entry = get_single_record(msg_id)
