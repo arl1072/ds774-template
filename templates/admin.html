@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h3>Employee Dashboard</h3>
+
 <hr>
 <!-- container for tablular structure: 1 row & 1 column -->
 <div class="container">
@@ -14,13 +14,17 @@
       <!-- If there is a current user session, display database entries -->
       {% if session['user_id'] %}
     
-      
+      <h3>Employee Dashboard</h3>
 
-      <div class="col-sm-12 my-auto">
+      <hr>
+
+      <div class="form-group">
+        <div class="col-md-12 text-center">
         <form action="" method="post" name="logout">
           <input class="btn btn-primary" name="admin" type="submit" value="Logout" />
           <a class="btn btn-primary" href="/insertissue" role="button">Insert Issue</a>
         </form>
+        </div>
       </div>
 
       <hr>
