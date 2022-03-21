@@ -72,7 +72,7 @@ def insertissue():
     if request.method == 'POST':
         fname = request.form['fname']
         lname = request.form['lname']
-        eaddress = request.form['status']
+        status = request.form['status']
         message = request.form['message']
         result = contact_form(fname, lname, status, message)
         if result:
