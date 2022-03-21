@@ -175,10 +175,10 @@ def get_single_record(message_id):
         if conn is not None:
             conn.close()
 
-def edit_record(message_id, fname, lname, eaddress, message):
+def edit_record(message_id, fname, lname, status, message):
     conn = connect_to_db()
 
-    sql = f"update contacts set fname='{fname}',lname='{lname}',eaddress='{eaddress}',message='{message}' where message_id='{message_id}';"
+    sql = f"update contacts set fname='{fname}',lname='{lname}',status='{status}',message='{message}' where message_id='{message_id}';"
 
     try:
 
