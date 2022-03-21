@@ -70,25 +70,17 @@ def admin():
 def insertissue():
     message = ''
     if request.method == 'POST':
-        if request.form.get("issue"):
-            fname = request.form['fname']
-            lname = request.form['lname']
-            status = request.form['status']
-            message = request.form['message']
-            result = contact_form(fname, lname, status, message)
-            if result:
-                return render_template('insertissue.html', message='Thank you for your submission')
-            else:
-                return render_template('insertissue.html', message='Error with submission')
-        elif request.form.get('admin')  == 'Logout':
-            session.pop('user_id')
-            return render_template('admin.html')
-       
+        fname = request.form['fname']
+        lname = request.form['lname']
+        status = request.form['status']
+        message = request.form['message']
+        result = contact_form(fname, lname, status, message)
+        if result:
+            return render_template('insertissue.html', message='Thank you for your submission')
         else:
-            return render_template('insertissue.html', message=message)
-
-    # if form was logout button, end user session
-    
+            return render_template('insertissue.html', message='Error with submission')
+    else:
+        return render_template('insertissue.html', message=message)
 
 
 @app.route("/register", methods=['GET', 'POST'])
