@@ -112,10 +112,10 @@ def edit():
         if request.form.get('edit') == 'save':
             fname = request.form['fname']
             lname = request.form['lname']
-            eaddress = request.form['eaddress']
+            status = request.form['status']
             message = request.form['message']
-            print(fname, lname, eaddress, message)
-            edit_record(msg_id, fname, lname, eaddress, message)
+            print(fname, lname, status, message)
+            edit_record(msg_id, fname, lname, status, message)
             return redirect('/admin')
 
         elif request.form.get('edit') == 'cancel':
