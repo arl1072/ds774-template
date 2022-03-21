@@ -7,6 +7,10 @@
 <div class="container">
     <div class="row">
         <div class="col-sm">
+        
+            {% if session['user_id'] %}
+            
+            <h3>Dashboard</h3>
 
             <!-- contact details -->
             <div class="form-group">
@@ -20,11 +24,12 @@
               <hr>
 
             <h3>Insert Issue</h3>
+            <hr>
             <div class="container-fluid bg-grey">
                 <div class="row">
                     <div class="col-sm-8">
-                        <p>Please fill out the form with specifics. If you need to contact Adam LePage
-                            please reach out with the information below!
+                        <p>Please fill out the form with specifics. If the issue is urgent,
+                            contact Adam LePage with the information listed below!
                         </p>
                         <p><i class="bi bi-telephone-fill"></i></span> (603) 555-5551</p>
                         <p><i class="bi bi-envelope-open-fill"></i></span> lepage@lhr.net</p>
@@ -56,11 +61,11 @@
                                required>
                        </div>
                        <div class="col-sm-6 form-group">
-                           <input class="form-control" id="email" name="eaddress" placeholder="Email" type="email"
+                           <input class="form-control" id="email" name="eaddress" placeholder="Issue Status" type="email"
                                required>
                        </div>
                    </div>
-                   <textarea class="form-control" id="comments" name="message" placeholder="Comment"
+                   <textarea class="form-control" id="comments" name="message" placeholder="Issue"
                        rows="5"></textarea><br>
                    <div class="row">
                        <div class="col-sm-12 form-group">
