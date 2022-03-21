@@ -80,13 +80,15 @@ def insertissue():
                 return render_template('insertissue.html', message='Thank you for your submission')
             else:
                 return render_template('insertissue.html', message='Error with submission')
+        elif request.form.get('admin')  == 'Logout':
+            session.pop('user_id')
+            return render_template('admin.html')
+       
         else:
             return render_template('insertissue.html', message=message)
 
     # if form was logout button, end user session
-    elif request.form.get('admin')  == 'Logout':
-        session.pop('user_id')
-        return render_template('admin.html')
+    
 
 
 @app.route("/register", methods=['GET', 'POST'])
