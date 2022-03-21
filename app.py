@@ -72,9 +72,9 @@ def insertissue():
     if request.method == 'POST':
         fname = request.form['fname']
         lname = request.form['lname']
-        eaddress = request.form['eaddress']
+        eaddress = request.form['status']
         message = request.form['message']
-        result = contact_form(fname, lname, eaddress, message)
+        result = contact_form(fname, lname, status, message)
         if result:
             return render_template('insertissue.html', message='Thank you for your submission')
         else:
