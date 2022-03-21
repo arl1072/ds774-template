@@ -82,6 +82,10 @@ def insertissue():
     else:
         return render_template('insertissue.html', message=message)
 
+    # if form was logout button, end user session
+    if request.form.get('admin')  == 'Logout':
+        session.pop('user_id')
+
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():

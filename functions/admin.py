@@ -17,11 +17,11 @@ def connect_to_db():
     return connection
 
 
-def contact_form(fname, lname, eaddress, message):
+def contact_form(fname, lname, status, message):
     
     conn = connect_to_db()
 
-    sql = f"INSERT INTO contacts(fname,lname,eaddress,message) VALUES('{fname}', '{lname}', '{eaddress}', '{message}');"
+    sql = f"INSERT INTO contacts(fname,lname,status,message) VALUES('{fname}', '{lname}', '{status}', '{message}');"
     try:
 
         # create a new cursor
